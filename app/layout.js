@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { AppProvider } from "@/context/context";
+import { QueryClientProvider } from "@tanstack/react-query";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

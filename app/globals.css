@@ -32,3 +32,13 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.dark-theme {
+  background-color: black;
+  color: beige;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+body {
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: beige;
+}
