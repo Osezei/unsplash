@@ -1,6 +1,6 @@
 import SearchForm from "@/components/SearchForm";
 import ThemeToggle from "@/components/ThemeToggle";
-
+import Gallery from "@/components/Gallery";
 export default function Home() {
   return (
     <main>
@@ -10,6 +10,7 @@ export default function Home() {
           Splash images
         </h3>
         <SearchForm />
+        <Gallery />
       </section>
     </main>
   );
