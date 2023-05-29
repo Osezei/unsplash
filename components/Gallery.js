@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 import { useGlobalContext } from "@/context/context";
-
+import { motion } from "framer-motion";
 const url =
   "https://api.unsplash.com/search/photos?client_id=Q_3imc_wKJtriGE6elrgnEmzbnYuxQQ89VfASylyyPQ";
 
@@ -21,28 +21,41 @@ const Gallery = () => {
   if (response.isLoading) {
     return (
       <section>
-        <p>Loading...</p>
+        <p className="font-semibold text-3xl text-center pt-10">Loading...</p>
       </section>
     );
   }
   if (response.isError) {
     return (
       <section>
-        <p>something went wrong</p>
+        <p className="font-semibold text-3xl text-center pt-10">
+          something went wrong
+        </p>
       </section>
     );
   }
   const results = response.data.results;
   if (results.length < 1) {
     return (
-      <section>
-        <p>No images found</p>
+      <section className="">
+        <p className="font-semibold text-3xl text-center pt-10">
+          No images found
+        </p>
       </section>
     );
   }
 
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      className="pt-4 grid grid-cols-2 gap-4 place-items-center"
+    >
       {results.map((item) => {
         const url = item?.urls?.regular;
         return (
@@ -51,13 +64,13 @@ const Gallery = () => {
             key={item.id}
             alt={item.alt_description}
             width={500}
-            height={500}
-            className="overflow-hidden w-[500px] h-[500px]"
+            height={250}
+            className="overflow-hidden w-[500px] h-[250px] object-cover"
             priority
           />
         );
       })}
-    </section>
+    </motion.section>
   );
 };
 
